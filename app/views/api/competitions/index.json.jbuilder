@@ -1,0 +1,1 @@
+json.array! @competitions, :name,:period_start,:period_end
