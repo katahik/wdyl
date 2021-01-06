@@ -24,6 +24,7 @@ export default {
     // setCompetitionsメソッドを定義
     setItems: function(){
       // GETメソッドでapi/competitionsとしたとき
+      // ここには、json形式になった@random_itemsがある(index.json.jbuilderで定義した)
       axios.get('/api/items')
           // 成功したら、
       .then(response=>(
