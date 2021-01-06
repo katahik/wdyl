@@ -1,18 +1,22 @@
+<h1 id="heading">Click either you "like".</h1>
+
 <div id="app">
+  <div id="pictures">
   <ul>
-    <li v-for="item in items" :key="item.id">
-      {{item.name}}
+    <li v-for="item in items">
+<!--      api/item/item.idに飛ぶ-->
+      <a v-bind:href="`api/items/` + item.id" controller="items" action="update" rel="nofollow" data-method="put" >{{item.name}}</a>
     </li>
   </ul>
+  </div>
 </div>
 
 <script>
-
     new Vue({
         el: "#app",
         data() {
             return {
-                items:"items"
+                items:"items",
             }
         },
         mounted() {
