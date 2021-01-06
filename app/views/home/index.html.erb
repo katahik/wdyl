@@ -1,1 +1,51 @@
-<%= javascript_pack_tag 'hello_vue' %>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!--  vueをインポート-->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+<!--  axiosをインポート-->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <title>Snippet App</title>
+</head>
+<body>
+
+<div id="app">
+  <ul>
+    <li v-for="item in items" :key="item.id">
+      {{item.name}}
+    </li>
+  </ul>
+</div>
+
+<script>
+
+    new Vue({
+        el: "#app",
+        data() {
+            return {
+                items:"items"
+            }
+        },
+        mounted() {
+            this.setItems();
+        },
+        methods: {
+            // setCompetitionsメソッドを定義
+            setItems: function () {
+                // GETメソッドでapi/competitionsとしたとき
+                // ここには、json形式になった@random_itemsがある(index.json.jbuilderで定義した)
+                axios.get('/api/items')
+                    // 成功したら、
+                    .then(response => (
+                        // Axiosで呼び出したAPIの情報をcompetitionsに格納
+                        this.items = response.data
+                    ))
+            },
+        }
+
+    });
+</script>
+
+</body>
+</html>

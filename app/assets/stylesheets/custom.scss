@@ -1,0 +1,102 @@
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+$light-gray: #777;
+
+//ヘッダーと重ならないようにbodyの上にpadding70pxをとる
+body { padding-top: 70px; }
+
+/* mixins, variables, etc. */
+
+$gray-medium-light: #eaeaea;
+
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
+
+#heading {
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+/* header */
+
+header{
+  #logo {
+    float: left;
+    font-size: 1.7em;
+    color: #fff;
+    letter-spacing: -1px;
+    padding-top: 9px;
+    font-weight: bold;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  #nav-item{
+    float: right;
+    color: #fff;
+    font-size: 1.5em;
+    letter-spacing: -1px;
+    padding-top: 9px;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+header{
+  background: #730E15;
+}
+
+/* footer */
+footer {
+  margin-top: 45px ;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: $light-gray;
+
+
+  small {
+    text-align: center;
+  }
+}
+
+/* top */
+
+#id {
+  text-align: center;
+}
+#pictures {
+  // 子要素のインライン要素を中央揃えにする
+  // 画像を画面中央に。文字を画像の中央下へ配置
+  text-align: center;
+
+  #picture {
+    //インラインブロック要素へ変換
+    //display 要素の状態を指定することができるプロパティ
+    //inline-block 前後の要素を横に並べる
+    display: inline-block;
+    margin: 20px;
+    font-size: 30px;
+  }
+}
+
+/* competitions */
+
+.paginate {
+  text-align: center;
+}
