@@ -1,0 +1,1 @@
+json.array! @random_items, :name, :image,:points,:competition_id

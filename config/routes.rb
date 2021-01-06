@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  get 'home', to: 'home#index'
+  root 'home#index'
 
   namespace :api,format:'json' do
       resources :competitions,only:[:index,:show,:create]
-      resources :items,only:[:update]
+      resources :items,only:[:index,:update]
   end
 end
