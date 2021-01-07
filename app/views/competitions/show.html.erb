@@ -1,0 +1,43 @@
+<h1 id="heading">
+  <%= @competition.name %> (<%= @competition.period_start %> 〜 <%= @competition.period_end %>)
+</h1>
+
+<div class="container">
+  <div class="paginate">
+    <!--    引数に@itemsを渡して、@itemsに対してページネーションを行う-->
+    <!--    コントローラーで何の@itemsにpaginateをつなげたため-->
+    <%= will_paginate(@items) %>
+  </div>
+  <div class="row">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>rank</th>
+        <th>name</th>
+        <th>points</th>
+        <th>image</th>
+      </tr>
+      </thead>
+      <tbody>
+      <!--@itemsの配列の中身をひとつひとつitemに入れて、実行していく-->
+      <!--パラメータのページの箇所(page=1とか)を整数に変えたときに1より大きかったら-->
+      <!--1とかparams[:page]*5-4をして、そのページの一番目の値（ランキング）を取る。-->
+      <!--違ったら（1ページ目だったら）1を代入-->
+      <% page = params[:page].to_i > 1 ? params[:page].to_i * 5 - 4 : 1 %>
+      <% @items.each.with_index(page) do |item, n| %>
+        <tr>
+          <td><%= n %></td>
+          <td><%= item.name %></td>
+          <td><%= item.points %></td>
+          <td>
+            <%= image_tag "/item_images/#{item.image}", width: "100px", height: "100" %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="paginate">
+    <%= will_paginate(@items) %>
+  </div>
+</div>
