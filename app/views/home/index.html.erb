@@ -2,18 +2,18 @@
 
 <div id="app">
   <div id="pictures">
-<div id="picture" v-for="item in items">
-  <!--    aタグのhref属性にその画像のレコードのidを入れる-->
-  <!--    こうすることで、URLにそのidが含まれる。/2 とか-->
-  <a @click.prevent="updataItem(item.id)">
-    <!--      public/item_images の中に画像を格納しておく。-->
-    <!--      DBには画像のデータの名前を入れておく-->
-    <img width="500px" height="500px" :src="'/item_images/' + item.image" />
-    <div>
-      {{item.name}}
+    <div id="picture" v-for="item in items">
+<!--      @click.preventとすることで画面遷移させない-->
+<!--      clickしたときは、updataItemが発火-->
+      <a @click.prevent="updataItem(item.id)">
+        <!--      public/item_images の中に画像を格納しておく。-->
+        <!--      DBには画像のデータの名前を入れておく-->
+        <img width="500px" height="500px" :src="'/item_images/' + item.image" />
+        <div>
+          {{item.name}}
+        </div>
+      </a>
     </div>
-  </a>
-</div>
   </div>
 </div>
 
@@ -23,6 +23,7 @@
         el: "#app",
         data() {
             return {
+                // itemsは配列でくるから、配列を定義しておく
                 items:['',''],
             }
         },
@@ -32,7 +33,7 @@
         methods: {
             // setCompetitionsメソッドを定義
             setItems: function () {
-                // GETメソッドでapi/competitionsとしたとき
+                // GETメソッドでapi/itemsとしたとき
                 // ここには、json形式になった@random_itemsがある(index.json.jbuilderで定義した)
                 axios.get('/api/items')
                     // 成功したら、
@@ -41,10 +42,13 @@
                         this.items = response.data
                     ))
             },
-            updataItem: function(id){
-                axios.put('api/items/'+id)
+            // itemをクリックしたとき、そのクリックしたほうのitemのidが渡って来る
+            updataItem: function(item_id){
+                // PUTメソッドでapi/items/item_idとする
+                axios.put('api/items/'+item_id)
+                    // 上がせいこうしたら
                 .then(response => (
-                    // Axiosで呼び出したAPIの情報をcompetitionsに格納
+                    // Axiosで呼び出したAPIの情報をitemsに格納
                     this.items = response.data
                 ))
             }
