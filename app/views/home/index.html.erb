@@ -2,21 +2,28 @@
 
 <div id="app">
   <div id="pictures">
-  <ul>
-    <li v-for="item in items">
-<!--      api/item/item.idに飛ぶ-->
-      <a v-bind:href="`api/items/` + item.id" controller="items" action="update" rel="nofollow" data-method="put" >{{item.name}}</a>
-    </li>
-  </ul>
+<div id="picture" v-for="item in items">
+  <!--    aタグのhref属性にその画像のレコードのidを入れる-->
+  <!--    こうすることで、URLにそのidが含まれる。/2 とか-->
+  <a @click.prevent="updataItem(item.id)">
+    <!--      public/item_images の中に画像を格納しておく。-->
+    <!--      DBには画像のデータの名前を入れておく-->
+    <img width="500px" height="500px" :src="'/item_images/' + item.image" />
+    <div>
+      {{item.name}}
+    </div>
+  </a>
+</div>
   </div>
 </div>
+
 
 <script>
     new Vue({
         el: "#app",
         data() {
             return {
-                items:"items",
+                items:['',''],
             }
         },
         mounted() {
@@ -30,11 +37,17 @@
                 axios.get('/api/items')
                     // 成功したら、
                     .then(response => (
-                        // Axiosで呼び出したAPIの情報をcompetitionsに格納
+                        // Axiosで呼び出したAPIの情報をitemsに格納
                         this.items = response.data
                     ))
             },
+            updataItem: function(id){
+                axios.put('api/items/'+id)
+                .then(response => (
+                    // Axiosで呼び出したAPIの情報をcompetitionsに格納
+                    this.items = response.data
+                ))
+            }
         }
-
     });
 </script>
