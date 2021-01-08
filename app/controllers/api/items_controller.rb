@@ -23,7 +23,7 @@ class Api::ItemsController < ApplicationController
     # 今現在、開催中の大会から、2つのitemをランダムで呼び出し、JSON形式にして返す
     # なぜJSON形式でないとだめか
     # log「rendering head :no_content」となり画面に画像が表示されない（headerやfooterは表示されている）
-    # ということは、
+    # ということは、response.dataはJSONでないと有効なデータで受け取らないのではないか
     def two_items_at_random_in_session_competition_in_JSON_format
         in_session_competition =
             Competition.find_by(period_start: -Float::INFINITY..Date.today, period_end: Date.today..Float::INFINITY)
