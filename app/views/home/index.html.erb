@@ -5,7 +5,7 @@
     <div id="picture" v-for="item in items">
 <!--      @click.preventとすることで画面遷移させない-->
 <!--      clickしたときは、updataItemが発火-->
-      <a @click.prevent="updataItem(item.id)">
+      <a @click.prevent="updateItem(item.id)">
         <!--      public/item_images の中に画像を格納しておく。-->
         <!--      DBには画像のデータの名前を入れておく-->
         <img :src="'/item_images/'+item.image" width="500px" height="500px"/>
@@ -37,7 +37,7 @@
             // setCompetitionsメソッドを定義
             setItems: function () {
                 // GETメソッドでapi/itemsとしたとき
-                // ここには、json形式になった@random_itemsがある(index.json.jbuilderで定義した)
+                // JSON形式のapi/itemsを取得
                 axios.get('/api/items')
                     // 成功したら、
                     .then(response => (
@@ -46,7 +46,7 @@
                     ))
             },
             // itemをクリックしたとき、そのクリックしたほうのitemのidが渡って来る
-            updataItem: function(item_id){
+            updateItem: function(item_id){
                 // PUTメソッドでapi/items/item_idとする
                 axios.put('api/items/'+item_id)
                     // 上が成功したら
