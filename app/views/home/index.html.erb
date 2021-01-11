@@ -40,20 +40,26 @@
                 // JSON形式のapi/itemsを取得
                 axios.get('/api/items')
                     // 成功したら、
-                    .then(response => (
+                    .then(response => {
                         // Axiosで呼び出したAPIの情報をitemsに格納
                         this.items = response.data
-                    ))
+                        // axiosで呼び出したAPIの情報をconsoleに出力
+                        console.log('status:', response.status)
+                        console.log('body:', response.data)
+                    })
             },
             // itemをクリックしたとき、そのクリックしたほうのitemのidが渡って来る
             updateItem: function(item_id){
                 // PUTメソッドでapi/items/item_idとする
                 axios.put('api/items/'+item_id)
                     // 上が成功したら
-                .then(response => (
+                .then(response => {
                     // Axiosで呼び出したAPIの情報をitemsに格納
                     this.items = response.data
-                ))
+                    // axiosで呼び出したAPIの情報をconsoleに出力
+                    console.log('status:',response.status)
+                    console.log('body:',response.data)
+                })
             }
         }
     });

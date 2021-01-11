@@ -1,5 +1,4 @@
 class Api::ItemsController < ApplicationController
-    require "date"
 
     def index
         @random_items = two_items_at_random_in_session_competition_in_JSON_format
@@ -24,6 +23,7 @@ class Api::ItemsController < ApplicationController
     # なぜJSON形式でないとだめか
     # log「rendering head :no_content」となり画面に画像が表示されない（headerやfooterは表示されている）
     # ということは、response.dataはJSONでないと有効なデータで受け取らないのではないか
+    # console.logでresponse.dataを確認したら、JSONではない場合は何も入っていなかった
     def two_items_at_random_in_session_competition_in_JSON_format
         in_session_competition =
             Competition.find_by(period_start: -Float::INFINITY..Date.today, period_end: Date.today..Float::INFINITY)
