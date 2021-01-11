@@ -6,9 +6,6 @@ class CompetitionsController < ApplicationController
     # 現在、大会中のものは表示させない。あくまで、過去の大会のみ表示
     def index
         # 今開催中の大会を表示させない。過去の大会のみを表示させる。
-        # where.notで検索条件以外の項目をpast_competitionへ格納
-        # not_held_competition
-        # ↓
         past_competitions =
             Competition.where.not(period_start: -Float::INFINITY..Date.today, period_end: Date.today..Float::INFINITY)
 
