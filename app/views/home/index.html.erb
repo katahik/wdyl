@@ -5,7 +5,7 @@
     <div id="picture" v-for="item in items">
 <!--      @click.preventとすることで画面遷移させない-->
 <!--      clickしたときは、updataItemが発火-->
-      <a @click.prevent="updataItem(item.id)">
+      <a @click.prevent="onChoose(item.id)">
         <!--      public/item_images の中に画像を格納しておく。-->
         <!--      DBには画像のデータの名前を入れておく-->
         <img :src="'/item_images/'+item.image" width="500px" height="500px"/>
@@ -17,7 +17,6 @@
   </div>
 </div>
 
-
 <script>
     new Vue({
         el: "#app",
@@ -26,34 +25,38 @@
                 // v-forは要素があれば回す
                 // itemsに何も入れないことでv-forが反応するのを防ぐ
                 // このitemsに何か値をセットしてしまうと、setItemsでDBから正しい値を持ってくる前に、その値がv-forで使われる.
-                // その結果v-forで回してもundefinedとなる
+                // その結果v-forで回してundefinedとなる
                 items:[],
             }
         },
         mounted() {
-            this.setItems();
+            this.onDisplay();
         },
         methods: {
-            // setCompetitionsメソッドを定義
-            setItems: function () {
+            // setItemsメソッドを定義
+            onDisplay: function () {
                 // GETメソッドでapi/itemsとしたとき
-                // ここには、json形式になった@random_itemsがある(index.json.jbuilderで定義した)
+                // JSON形式のapi/itemsを取得
                 axios.get('/api/items')
                     // 成功したら、
-                    .then(response => (
-                        // Axiosで呼び出したAPIの情報をitemsに格納
-                        this.items = response.data
-                    ))
+                    .then(response => {
+                        this.refresh(response);
+                    })
             },
             // itemをクリックしたとき、そのクリックしたほうのitemのidが渡って来る
-            updataItem: function(item_id){
+            onChoose: function(item_id){
                 // PUTメソッドでapi/items/item_idとする
                 axios.put('api/items/'+item_id)
                     // 上が成功したら
-                .then(response => (
-                    // Axiosで呼び出したAPIの情報をitemsに格納
-                    this.items = response.data
-                ))
+                .then(response => {
+                    this.refresh(response);
+                })
+            },
+            refresh: function(response){
+                this.items = response.data
+                // axiosで呼び出したAPIの情報をconsoleに出力
+                console.log('status:', response.status)
+                console.log('body:', response.data)
             }
         }
     });

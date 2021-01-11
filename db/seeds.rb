@@ -2,6 +2,10 @@
 # competition作成
 
 # competitionsページ作成用
+Competition.create!(name:  "my favorite monster third",
+                    period_start: "2021-1-11",
+                    period_end:   "2021-1-18",
+                    )
 Competition.create!(name:  "my favorite monster second",
                     period_start: "2021-1-3",
                     period_end:   "2021-1-10",
