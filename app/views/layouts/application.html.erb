@@ -17,6 +17,9 @@
 
 <body>
 <%= render 'layouts/header' %>
+<!--ログイン・ログアウトした際にはメッセージを作成する-->
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
 <%= yield %>
 <%= render 'layouts/footer' %>
 <!--デバッグ用の情報を表示させる。ただし、developments環境のみに表示-->
