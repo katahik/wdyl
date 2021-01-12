@@ -3,7 +3,10 @@
     <!--Railsヘルパーのlink_toでaタグを生成-->
     <!--link_to リンクテキスト,URL,オプションハッシュ(任意。今回はidのlogo）-->
     <%=link_to "Which do you like?" ,root_path,id:"logo" %>
+    <!--ログインしていたら、Log outボタンを表示させる-->
+    <% if user_signed_in? %>
     <%=link_to "Log out","/users/sign_out",method: :delete ,id:"nav-item"%>
+      <% end %>
     <%=link_to "Past competitions","/competitions" ,id:"nav-item"%>
   </div>
 </header>
