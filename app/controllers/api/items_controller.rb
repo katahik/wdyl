@@ -8,13 +8,9 @@ class Api::ItemsController < ApplicationController
     def update
         # クリックされたitemのidを頼りに選択されたitemを探す
         @selected_item = Item.find(params[:id])
-        # そのアイテムのpointsカラムに+1
         @selected_item.points += 1
-        # 保存
         @selected_item.save
-
         @candidate_items = candidate_items
-
         render json: @candidate_items
     end
 
