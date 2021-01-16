@@ -16,9 +16,10 @@ class Api::ItemsController < ApplicationController
 
     def create
 
+        @item = Item.find(params[:item_id])
+        byebug
         @candidate_items = candidate_items
         render json: @candidate_items
-        # byebug
     end
 
     private
