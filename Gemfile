@@ -5,6 +5,7 @@ ruby '2.7.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1.0'
+gem 'activerecord-session_store'
 gem 'devise'
 # seeder作成のため、fakerをインストール
 gem 'faker', '2.1.2'
