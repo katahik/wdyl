@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_16_082053) do
+ActiveRecord::Schema.define(version: 2021_01_16_094235) do
+
+  create_table "chosenitems", force: :cascade do |t|
+    t.integer "session_id"
+    t.integer "item_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_chosenitems_on_item_id"
+    t.index ["session_id", "item_id"], name: "index_chosenitems_on_session_id_and_item_id"
+    t.index ["session_id"], name: "index_chosenitems_on_session_id"
+  end
 
   create_table "competitions", force: :cascade do |t|
     t.string "name"

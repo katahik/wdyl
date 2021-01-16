@@ -16,7 +16,7 @@ class CompetitionsController < ApplicationController
 
         # 各competitionの1位を探す
         # competition_idでグループ分けして、その中でpointsが一番高いitemを抽出する
-        query = "SELECT *,MAX(points) FROM Items GROUP BY competition_id"
+        query = "SELECT *,MAX(points) FROM items GROUP BY competition_id"
         @winners = Item.find_by_sql(query)
     end
 

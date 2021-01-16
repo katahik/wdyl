@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'home#index'
   resources :competitions,only:[:index,:show]
   namespace :api,format:'json' do
-      resources :items,only:[:index,:update]
+      # resources :items,only:[:index,:updated]
+      resources :items,only:[:index,:create]
   end
 end
