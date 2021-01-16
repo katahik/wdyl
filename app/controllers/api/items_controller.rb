@@ -16,15 +16,17 @@ class Api::ItemsController < ApplicationController
 
     def create
 
+        # viewから送ってくるitem_idを頼りに@itemを探す
         @item = Item.find(params[:item_id])
-        # 渡されたitem_idから該当のitemを検索できた。
-        # 次は、いまデータベースに入っているsession_idと@itemの組み合わせをDBに保存する
-        @session = Session.all
+        # 現状、sessionは上書きされるからfirstで取得できる
+        @session = Session.first
 
-        @chosenitem = Chosenitem.new()
+        @item_id = @item.id
+        @session_id = @session.id
+
+        @chosenitem = Chosenitem.new(session_id:@session_id,item_id:@item_id)
         @chosenitem.save
-
-        byebug
+        # byebug
         @candidate_items = candidate_items
         render json: @candidate_items
     end
