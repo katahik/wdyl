@@ -17,6 +17,13 @@ class Api::ItemsController < ApplicationController
     def create
 
         @item = Item.find(params[:item_id])
+        # 渡されたitem_idから該当のitemを検索できた。
+        # 次は、いまデータベースに入っているsession_idと@itemの組み合わせをDBに保存する
+        @session = Session.all
+
+        @chosenitem = Chosenitem.new()
+        @chosenitem.save
+
         byebug
         @candidate_items = candidate_items
         render json: @candidate_items
