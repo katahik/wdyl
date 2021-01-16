@@ -12,10 +12,10 @@ Gem::Specification.new do |s|
   s.description = "Hooks into will_paginate to format the html to match Twitter Bootstrap styling.  Extension code was originally written by Isaac Bowen (https://gist.github.com/1182136).".freeze
   s.email = ["nick@ndfine.com".freeze, "ikebowen@gmail.com".freeze]
   s.homepage = "https://github.com/yrgoldteeth/bootstrap-will_paginate".freeze
-  s.rubygems_version = "3.2.4".freeze
+  s.rubygems_version = "3.1.2".freeze
   s.summary = "Format will_paginate html to match Twitter Bootstrap styling.".freeze
 
-  s.installed_by_version = "3.2.4" if s.respond_to? :installed_by_version
+  s.installed_by_version = "3.1.2" if s.respond_to? :installed_by_version
 
   if s.respond_to? :specification_version then
     s.specification_version = 4

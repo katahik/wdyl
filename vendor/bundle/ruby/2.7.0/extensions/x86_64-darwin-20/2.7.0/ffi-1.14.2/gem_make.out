@@ -1,5 +1,5 @@
-current directory: /Users/katahira/dev/wdyl_new/vendor/bundle/ruby/2.7.0/gems/ffi-1.14.2/ext/ffi_c
-/Users/katahira/.rbenv/versions/2.7.0/bin/ruby -I /Users/katahira/.rbenv/versions/2.7.0/lib/ruby/site_ruby/2.7.0 -r ./siteconf20210106-23770-tftwc3.rb extconf.rb
+current directory: /Users/katahira/dev/wdyl/wdyl_vue/vendor/bundle/ruby/2.7.0/gems/ffi-1.14.2/ext/ffi_c
+/Users/katahira/.rbenv/versions/2.7.0/bin/ruby -I /Users/katahira/.rbenv/versions/2.7.0/lib/ruby/2.7.0 -r ./siteconf20210116-47240-1iliixi.rb extconf.rb
 checking for ffi_prep_closure_loc() in -lffi... yes
 checking for ffi_prep_cif_var()... yes
 checking for ffi_raw_call()... yes
@@ -7,11 +7,11 @@ checking for ffi_prep_raw_closure()... yes
 creating extconf.h
 creating Makefile
 
-current directory: /Users/katahira/dev/wdyl_new/vendor/bundle/ruby/2.7.0/gems/ffi-1.14.2/ext/ffi_c
-make DESTDIR\= clean
+current directory: /Users/katahira/dev/wdyl/wdyl_vue/vendor/bundle/ruby/2.7.0/gems/ffi-1.14.2/ext/ffi_c
+make "DESTDIR=" clean
 
-current directory: /Users/katahira/dev/wdyl_new/vendor/bundle/ruby/2.7.0/gems/ffi-1.14.2/ext/ffi_c
-make DESTDIR\=
+current directory: /Users/katahira/dev/wdyl/wdyl_vue/vendor/bundle/ruby/2.7.0/gems/ffi-1.14.2/ext/ffi_c
+make "DESTDIR="
 compiling AbstractMemory.c
 compiling ArrayType.c
 compiling Buffer.c
@@ -37,6 +37,6 @@ compiling Variadic.c
 compiling ffi.c
 linking shared-object ffi_c.bundle
 
-current directory: /Users/katahira/dev/wdyl_new/vendor/bundle/ruby/2.7.0/gems/ffi-1.14.2/ext/ffi_c
-make DESTDIR\= install
-/usr/bin/install -c -m 0755 ffi_c.bundle ./.gem.20210106-23770-1mudezl
+current directory: /Users/katahira/dev/wdyl/wdyl_vue/vendor/bundle/ruby/2.7.0/gems/ffi-1.14.2/ext/ffi_c
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 ffi_c.bundle ./.gem.20210116-47240-j8xh6q

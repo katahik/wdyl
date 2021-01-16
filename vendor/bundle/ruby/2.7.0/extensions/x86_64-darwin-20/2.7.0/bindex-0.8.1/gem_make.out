@@ -1,15 +1,15 @@
-current directory: /Users/katahira/dev/wdyl_new/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
-/Users/katahira/.rbenv/versions/2.7.0/bin/ruby -I /Users/katahira/.rbenv/versions/2.7.0/lib/ruby/site_ruby/2.7.0 -r ./siteconf20210106-23770-18xxwyd.rb extconf.rb
+current directory: /Users/katahira/dev/wdyl/wdyl_vue/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+/Users/katahira/.rbenv/versions/2.7.0/bin/ruby -I /Users/katahira/.rbenv/versions/2.7.0/lib/ruby/2.7.0 -r ./siteconf20210116-47240-h56gto.rb extconf.rb
 creating Makefile
 
-current directory: /Users/katahira/dev/wdyl_new/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
-make DESTDIR\= clean
+current directory: /Users/katahira/dev/wdyl/wdyl_vue/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" clean
 
-current directory: /Users/katahira/dev/wdyl_new/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
-make DESTDIR\=
+current directory: /Users/katahira/dev/wdyl/wdyl_vue/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR="
 compiling cruby.c
 linking shared-object skiptrace/internal/cruby.bundle
 
-current directory: /Users/katahira/dev/wdyl_new/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
-make DESTDIR\= install
-/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20210106-23770-17k8imu/skiptrace/internal
+current directory: /Users/katahira/dev/wdyl/wdyl_vue/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20210116-47240-cv6wgb/skiptrace/internal

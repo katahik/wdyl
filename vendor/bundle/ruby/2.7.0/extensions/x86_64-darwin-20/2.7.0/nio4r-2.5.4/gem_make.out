@@ -1,5 +1,5 @@
-current directory: /Users/katahira/dev/wdyl_new/vendor/bundle/ruby/2.7.0/gems/nio4r-2.5.4/ext/nio4r
-/Users/katahira/.rbenv/versions/2.7.0/bin/ruby -I /Users/katahira/.rbenv/versions/2.7.0/lib/ruby/site_ruby/2.7.0 -r ./siteconf20210106-23770-1wxfyaf.rb extconf.rb
+current directory: /Users/katahira/dev/wdyl/wdyl_vue/vendor/bundle/ruby/2.7.0/gems/nio4r-2.5.4/ext/nio4r
+/Users/katahira/.rbenv/versions/2.7.0/bin/ruby -I /Users/katahira/.rbenv/versions/2.7.0/lib/ruby/2.7.0 -r ./siteconf20210116-47240-1tdgmlj.rb extconf.rb
 checking for unistd.h... yes
 checking for linux/aio_abi.h... no
 checking for sys/select.h... yes
@@ -11,11 +11,11 @@ checking for port_event_t in port.h... no
 checking for sys/resource.h... yes
 creating Makefile
 
-current directory: /Users/katahira/dev/wdyl_new/vendor/bundle/ruby/2.7.0/gems/nio4r-2.5.4/ext/nio4r
-make DESTDIR\= clean
+current directory: /Users/katahira/dev/wdyl/wdyl_vue/vendor/bundle/ruby/2.7.0/gems/nio4r-2.5.4/ext/nio4r
+make "DESTDIR=" clean
 
-current directory: /Users/katahira/dev/wdyl_new/vendor/bundle/ruby/2.7.0/gems/nio4r-2.5.4/ext/nio4r
-make DESTDIR\=
+current directory: /Users/katahira/dev/wdyl/wdyl_vue/vendor/bundle/ruby/2.7.0/gems/nio4r-2.5.4/ext/nio4r
+make "DESTDIR="
 compiling bytebuffer.c
 compiling monitor.c
 monitor.c:185:40: warning: implicit conversion loses integer precision: 'VALUE' (aka 'unsigned long') to 'int' [-Wshorten-64-to-32]
@@ -97,6 +97,6 @@ VALUE rb_ensure(VALUE(*)(VALUE),VALUE,VALUE(*)(VALUE),VALUE);
 1 warning generated.
 linking shared-object nio4r_ext.bundle
 
-current directory: /Users/katahira/dev/wdyl_new/vendor/bundle/ruby/2.7.0/gems/nio4r-2.5.4/ext/nio4r
-make DESTDIR\= install
-/usr/bin/install -c -m 0755 nio4r_ext.bundle ./.gem.20210106-23770-3lutd6
+current directory: /Users/katahira/dev/wdyl/wdyl_vue/vendor/bundle/ruby/2.7.0/gems/nio4r-2.5.4/ext/nio4r
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 nio4r_ext.bundle ./.gem.20210116-47240-5adxry

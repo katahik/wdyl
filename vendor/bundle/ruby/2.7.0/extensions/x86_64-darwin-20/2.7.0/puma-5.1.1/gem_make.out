@@ -1,5 +1,5 @@
-current directory: /Users/katahira/dev/wdyl_new/vendor/bundle/ruby/2.7.0/gems/puma-5.1.1/ext/puma_http11
-/Users/katahira/.rbenv/versions/2.7.0/bin/ruby -I /Users/katahira/.rbenv/versions/2.7.0/lib/ruby/site_ruby/2.7.0 -r ./siteconf20210106-23770-1ep7z4v.rb extconf.rb
+current directory: /Users/katahira/dev/wdyl/wdyl_vue/vendor/bundle/ruby/2.7.0/gems/puma-5.1.1/ext/puma_http11
+/Users/katahira/.rbenv/versions/2.7.0/bin/ruby -I /Users/katahira/.rbenv/versions/2.7.0/lib/ruby/2.7.0 -r ./siteconf20210116-47240-zxo0kv.rb extconf.rb
 checking for BIO_read() in -lcrypto... yes
 checking for SSL_CTX_new() in -lssl... yes
 checking for openssl/bio.h... yes
@@ -8,11 +8,11 @@ checking for TLS_server_method() in openssl/ssl.h... yes
 checking for SSL_CTX_set_min_proto_version(NULL, 0) in openssl/ssl.h... yes
 creating Makefile
 
-current directory: /Users/katahira/dev/wdyl_new/vendor/bundle/ruby/2.7.0/gems/puma-5.1.1/ext/puma_http11
-make DESTDIR\= clean
+current directory: /Users/katahira/dev/wdyl/wdyl_vue/vendor/bundle/ruby/2.7.0/gems/puma-5.1.1/ext/puma_http11
+make "DESTDIR=" clean
 
-current directory: /Users/katahira/dev/wdyl_new/vendor/bundle/ruby/2.7.0/gems/puma-5.1.1/ext/puma_http11
-make DESTDIR\=
+current directory: /Users/katahira/dev/wdyl/wdyl_vue/vendor/bundle/ruby/2.7.0/gems/puma-5.1.1/ext/puma_http11
+make "DESTDIR="
 compiling http11_parser.c
 ext/puma_http11/http11_parser.c:46:18: warning: unused variable 'puma_parser_en_main' [-Wunused-const-variable]
 static const int puma_parser_en_main = 1;
@@ -26,6 +26,6 @@ void raise_error(SSL* ssl, int result) {
 compiling puma_http11.c
 linking shared-object puma/puma_http11.bundle
 
-current directory: /Users/katahira/dev/wdyl_new/vendor/bundle/ruby/2.7.0/gems/puma-5.1.1/ext/puma_http11
-make DESTDIR\= install
-/usr/bin/install -c -m 0755 puma_http11.bundle ./.gem.20210106-23770-1v0xtez/puma
+current directory: /Users/katahira/dev/wdyl/wdyl_vue/vendor/bundle/ruby/2.7.0/gems/puma-5.1.1/ext/puma_http11
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 puma_http11.bundle ./.gem.20210116-47240-17g1yz0/puma

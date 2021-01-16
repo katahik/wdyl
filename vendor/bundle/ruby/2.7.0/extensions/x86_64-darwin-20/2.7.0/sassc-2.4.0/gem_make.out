@@ -1,12 +1,12 @@
-current directory: /Users/katahira/dev/wdyl_new/vendor/bundle/ruby/2.7.0/gems/sassc-2.4.0/ext
-/Users/katahira/.rbenv/versions/2.7.0/bin/ruby -I /Users/katahira/.rbenv/versions/2.7.0/lib/ruby/site_ruby/2.7.0 -r ./siteconf20210106-23770-h9x02d.rb extconf.rb
+current directory: /Users/katahira/dev/wdyl/wdyl_vue/vendor/bundle/ruby/2.7.0/gems/sassc-2.4.0/ext
+/Users/katahira/.rbenv/versions/2.7.0/bin/ruby -I /Users/katahira/.rbenv/versions/2.7.0/lib/ruby/2.7.0 -r ./siteconf20210116-47240-17z53us.rb extconf.rb
 creating Makefile
 
-current directory: /Users/katahira/dev/wdyl_new/vendor/bundle/ruby/2.7.0/gems/sassc-2.4.0/ext
-make DESTDIR\= clean
+current directory: /Users/katahira/dev/wdyl/wdyl_vue/vendor/bundle/ruby/2.7.0/gems/sassc-2.4.0/ext
+make "DESTDIR=" clean
 
-current directory: /Users/katahira/dev/wdyl_new/vendor/bundle/ruby/2.7.0/gems/sassc-2.4.0/ext
-make DESTDIR\=
+current directory: /Users/katahira/dev/wdyl/wdyl_vue/vendor/bundle/ruby/2.7.0/gems/sassc-2.4.0/ext
+make "DESTDIR="
 compiling ./libsass/src/ast.cpp
 compiling ./libsass/src/ast2c.cpp
 compiling ./libsass/src/ast_fwd_decl.cpp
@@ -75,6 +75,6 @@ compiling ./libsass/src/util_string.cpp
 compiling ./libsass/src/values.cpp
 linking shared-object sassc/libsass.bundle
 
-current directory: /Users/katahira/dev/wdyl_new/vendor/bundle/ruby/2.7.0/gems/sassc-2.4.0/ext
-make DESTDIR\= install
-/usr/bin/install -c -m 0755 libsass.bundle ./.gem.20210106-23770-qwclw/sassc
+current directory: /Users/katahira/dev/wdyl/wdyl_vue/vendor/bundle/ruby/2.7.0/gems/sassc-2.4.0/ext
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 libsass.bundle ./.gem.20210116-47240-1v6og1d/sassc
