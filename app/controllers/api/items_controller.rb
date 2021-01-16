@@ -5,13 +5,20 @@ class Api::ItemsController < ApplicationController
         render json: @candidate_items
     end
 
-    def update
-        # クリックされたitemのidを頼りに選択されたitemを探す
-        @selected_item = Item.find(params[:id])
-        @selected_item.points += 1
-        @selected_item.save
+    # def update
+    #     # クリックされたitemのidを頼りに選択されたitemを探す
+    #     @selected_item = Item.find(params[:id])
+    #     @selected_item.points += 1
+    #     @selected_item.save
+    #     @candidate_items = candidate_items
+    #     render json: @candidate_items
+    # end
+
+    def create
+
         @candidate_items = candidate_items
         render json: @candidate_items
+        # byebug
     end
 
     private

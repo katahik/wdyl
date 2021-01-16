@@ -46,7 +46,8 @@
             // itemをクリックしたとき、そのクリックしたほうのitemのidが渡って来る
             onChoose: function(item_id){
                 // PUTメソッドでapi/items/item_idとする
-                axios.put('api/items/'+item_id)
+                axios.post('api/items')
+                // axios.put('api/items/'+item_id)
                     // 上が成功したら
                 .then(response => {
                     this.refresh(response);
