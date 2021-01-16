@@ -17,16 +17,14 @@ class Api::ItemsController < ApplicationController
     def create
 
         # viewから送ってくるitem_idを頼りに@itemを探す
-        @item = Item.find(params[:item_id])
+        @item_id = Item.find(params[:item_id]).id
         # 現状、sessionは上書きされるからfirstで取得できる
-        @session = Session.first
+        @session_id = Session.first.id
 
-        @item_id = @item.id
-        @session_id = @session.id
-
+        # session_idとitem_idのカラムにそれぞれ、@item_id,@session_idの値を格納
         @chosenitem = Chosenitem.new(session_id:@session_id,item_id:@item_id)
         @chosenitem.save
-        # byebug
+
         @candidate_items = candidate_items
         render json: @candidate_items
     end
