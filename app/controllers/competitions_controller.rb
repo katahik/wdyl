@@ -39,9 +39,8 @@ class CompetitionsController < ApplicationController
                       ) AS t
                   ) AS tt
                   WHERE rank = 1"
+        @winners2 = ActiveRecord::Base.connection.select_all(query2)
 
-        @winners2 = Item.find_by_sql(query2)
-        @winners3 = Chosenitem.find_by_sql(query2)
 
         byebug
 
