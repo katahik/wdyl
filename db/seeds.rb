@@ -1,4 +1,10 @@
 
+User.create!(
+    email: 'mail@gmail.com',
+    username: 'foo',
+    password: '00000000'
+)
+
 # competition作成
 
 # competitionsページ作成用
@@ -54,26 +60,7 @@ Competition.create!(name:  "my favorite book",
     )
 end
 
-# session作成
-10.times do |n|
-    session_id  = "#{n+1}"
-    data = "#{n+1}"
-    Session.create!(session_id:  session_id,
-                    data: data
-    )
-end
 
-# itemに紐ついたchosenitemsテーブルを作成
-# これでitemシーダーで作った、item_idをchosenitemテーブルへ流し込める
-# そうすることで、competition_idが取得できる
-Item.all.each do |item|
-    10.times do |n|
-    item.chosenitems.create!(
-        session_id: "#{n+1}",
-        item_id: Faker:: Number.between(from: 1, to: 50)
-    )
-    end
-end
 
 
 # show画面検証用
@@ -145,4 +132,26 @@ end
                  points: points,
                  competition_id: 8
     )
+end
+
+# session作成
+5.times do |n|
+    session_id  = "#{n+1}"
+    data = "#{n+1}"
+    Session.create!(session_id:  session_id,
+                    data: data
+    )
+end
+
+# itemに紐ついたchosenitemsテーブルを作成
+# これでitemシーダーで作った、itemのidをchosenitemテーブルへ流し込める
+# そうすることで、competition_idが取得できる
+# session数が5つで、それぞれのsessionでitemを10個ランダムに選択する
+5.times do |n|
+    Item.order("RANDOM()").limit(10).each do |item|
+        item.chosenitems.create!(
+            session_id: "#{n+1}",
+            item_id: rand(item.id)
+        )
+    end
 end
