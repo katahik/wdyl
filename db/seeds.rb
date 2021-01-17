@@ -50,9 +50,31 @@ Competition.create!(name:  "my favorite book",
     Item.create!(name:  name,
                  image: image,
                  points: 1,
-                 competition_id: 1
+                 competition_id: 1,
     )
 end
+
+# session作成
+10.times do |n|
+    session_id  = "#{n+1}"
+    data = "#{n+1}"
+    Session.create!(session_id:  session_id,
+                    data: data
+    )
+end
+
+# itemに紐ついたchosenitemsテーブルを作成
+# これでitemシーダーで作った、item_idをchosenitemテーブルへ流し込める
+# そうすることで、competition_idが取得できる
+Item.all.each do |item|
+    10.times do |n|
+    item.chosenitems.create!(
+        session_id: "#{n+1}",
+        item_id: Faker:: Number.between(from: 1, to: 50)
+    )
+    end
+end
+
 
 # show画面検証用
 4.times do |n|
