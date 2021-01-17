@@ -25,23 +25,23 @@ class CompetitionsController < ApplicationController
         #  → competition_idごとに振り分けて、COUNTの数によって順位付けして、rankという列を作り、そこに表示
         # rankが1のもののみを抽出する
         query2 = "SELECT *
-                  FROM (
-                      SELECT
-                          *,
-                          RANK() OVER (PARTITION BY competition_id ORDER BY COUNT DESC) AS rank
-                      FROM (
-                          SELECT
-                              items.competition_id,
-                              items.id,
-                              count(*) AS count
-                          FROM chosenitems INNER JOIN items ON chosenitems.item_id = items.id
-                          GROUP BY items.competition_id, items.id
-                      ) AS t
-                  ) AS tt
-                  WHERE rank = 1"
+            FROM (
+                SELECT
+                    *,
+                    RANK() OVER (PARTITION BY competition_id ORDER BY COUNT DESC) AS rank
+                FROM (
+                    SELECT
+                        items.competition_id,
+                        items.id,
+                        items.image,
+                        count(*) AS count
+                    FROM chosenitems INNER JOIN items ON chosenitems.item_id = items.id
+                    GROUP BY items.competition_id, items.id
+                ) AS t
+            ) AS tt
+            WHERE rank = 1"
+        # select_all -> セレクト文の結果取得
         @winners2 = ActiveRecord::Base.connection.select_all(query2)
-
-
         byebug
 
     end

@@ -61,8 +61,6 @@ Competition.create!(name:  "my favorite book",
 end
 
 
-
-
 # show画面検証用
 4.times do |n|
     name  = "monster#{n+1}"
@@ -73,6 +71,17 @@ end
                  competition_id: 2
     )
 end
+
+4.times do |n|
+    name  = "monster#{n+1}"
+    image = "monster#{n+1}.jpeg"
+    Item.create!(name:  name,
+                 image: image,
+                 points: 1,
+                 competition_id: 3
+    )
+end
+
 10.times do |n|
     name  = "drink#{n+1}"
     image = "drink_sample.jpeg"
@@ -80,7 +89,7 @@ end
     Item.create!(name:  name,
                  image: image,
                  points: points,
-                 competition_id: 3
+                 competition_id: 4
     )
 end
 10.times do |n|
@@ -90,7 +99,7 @@ end
     Item.create!(name:  name,
                  image: image,
                  points: points,
-                 competition_id: 4
+                 competition_id: 5
     )
 end
 10.times do |n|
@@ -100,7 +109,7 @@ end
     Item.create!(name:  name,
                  image: image,
                  points: points,
-                 competition_id: 5
+                 competition_id: 6
     )
 end
 10.times do |n|
@@ -110,7 +119,7 @@ end
     Item.create!(name:  name,
                  image: image,
                  points: points,
-                 competition_id: 6
+                 competition_id: 7
     )
 end
 10.times do |n|
@@ -120,7 +129,7 @@ end
     Item.create!(name:  name,
                  image: image,
                  points: points,
-                 competition_id: 7
+                 competition_id: 8
     )
 end
 10.times do |n|
@@ -130,7 +139,7 @@ end
     Item.create!(name:  name,
                  image: image,
                  points: points,
-                 competition_id: 8
+                 competition_id: 9
     )
 end
 
