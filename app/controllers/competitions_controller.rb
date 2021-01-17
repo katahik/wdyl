@@ -18,6 +18,33 @@ class CompetitionsController < ApplicationController
         # competition_idでグループ分けして、その中でpointsが一番高いitemを抽出する
         query = "SELECT *,MAX(points) FROM items GROUP BY competition_id"
         @winners = Item.find_by_sql(query)
+
+        # chosenitemsとitemsテーブルをひっつけて、competition_idで分けてから,また、item_idで分けてから、item_idをカウントした
+        # item_idの個数がわかったから、それを元にランク付けを行った
+        # RANK() OVER (PARTITION BY competition_id ORDER BY COUNT DESC) AS rank
+        #  → competition_idごとに振り分けて、COUNTの数によって順位付けして、rankという列を作り、そこに表示
+        # rankが1のもののみを抽出する
+        query2 = "SELECT *
+                  FROM (
+                      SELECT
+                          *,
+                          RANK() OVER (PARTITION BY competition_id ORDER BY COUNT DESC) AS rank
+                      FROM (
+                          SELECT
+                              items.competition_id,
+                              items.id,
+                              count(*) AS count
+                          FROM chosenitems INNER JOIN items ON chosenitems.item_id = items.id
+                          GROUP BY items.competition_id, items.id
+                      ) AS t
+                  ) AS tt
+                  WHERE rank = 1"
+
+        @winners2 = Item.find_by_sql(query2)
+        @winners3 = Chosenitem.find_by_sql(query2)
+
+        byebug
+
     end
 
     # GET /competition/:id
