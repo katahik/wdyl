@@ -143,24 +143,24 @@ end
     )
 end
 
-# session作成
-5.times do |n|
-    session_id  = "#{n+1}"
-    data = "#{n+1}"
-    Session.create!(session_id:  session_id,
-                    data: data
-    )
-end
-
-# itemに紐ついたchosenitemsテーブルを作成
-# これでitemシーダーで作った、itemのidをchosenitemテーブルへ流し込める
-# そうすることで、competition_idが取得できる
-# session数が5つで、それぞれのsessionでitemを10個ランダムに選択する
-5.times do |n|
-    Item.order("RANDOM()").limit(10).each do |item|
-        item.chosenitems.create!(
-            session_id: "#{n+1}",
-            item_id: rand(item.id)
-        )
-    end
-end
+# # session作成
+# 5.times do |n|
+#     session_id  = "#{n+1}"
+#     data = "#{n+1}"
+#     Session.create!(session_id:  session_id,
+#                     data: data
+#     )
+# end
+#
+# # itemに紐ついたchosenitemsテーブルを作成
+# # これでitemシーダーで作った、itemのidをchosenitemテーブルへ流し込める
+# # そうすることで、competition_idが取得できる
+# # session数が5つで、それぞれのsessionでitemを10個ランダムに選択する
+# 5.times do |n|
+#     Item.order("RANDOM()").limit(10).each do |item|
+#         item.chosenitems.create!(
+#             session_id: "#{n+1}",
+#             item_id: rand(item.id)
+#         )
+#     end
+# end

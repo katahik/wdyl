@@ -20,6 +20,11 @@ class Api::ItemsController < ApplicationController
         @item_id = Item.find(params[:item_id]).id
         # 現状、sessionは上書きされるからfirstで取得できる
         @session_id = Session.first.id
+        # ↓
+        # sessionsテーブルに格納した、sessions_idをchosenitemsテーブルに引っ張ってくる
+        # そのsession_idでサーバーサイドがもっているsession.idが同じかどうか、判断して同じなら
+        # sessionsテーブルに格納してあるsession_idを格納
+        session
 
         # session_idとitem_idのカラムにそれぞれ、@item_id,@session_idの値を格納
         @chosenitem = Chosenitem.new(session_id:@session_id,item_id:@item_id)
@@ -39,6 +44,4 @@ class Api::ItemsController < ApplicationController
             .order("RANDOM()")
             .limit(2)
     end
-
-
 end
