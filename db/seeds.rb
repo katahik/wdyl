@@ -8,6 +8,11 @@ User.create!(
 # competition作成
 
 # competitionsページ作成用
+Competition.create!(name:  "my favorite monster fourth",
+                    period_start: "2021-1-19",
+                    period_end:   "2021-1-26",
+                    )
+
 Competition.create!(name:  "my favorite monster third",
                     period_start: "2021-1-11",
                     period_end:   "2021-1-18",
@@ -140,6 +145,15 @@ end
                  image: image,
                  points: points,
                  competition_id: 9
+    )
+end
+4.times do |n|
+    name  = "monster#{n+1}"
+    image = "monster#{n+1}.jpeg"
+    Item.create!(name:  name,
+                 image: image,
+                 points: 1,
+                 competition_id: 10
     )
 end
 

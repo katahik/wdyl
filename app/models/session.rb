@@ -1,5 +1,5 @@
 class Session < ApplicationRecord
-    # クラス名を指定
+    self.primary_key = :session_id
     has_many :chosenitems, class_name: "Chosenitem",
              foreign_key: "session_id"
 

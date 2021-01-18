@@ -15,7 +15,6 @@ class Api::ItemsController < ApplicationController
     # end
 
     def create
-
         # viewから送ってくるitem_idを頼りに@itemを探す
         @item_id = Item.find(params[:item_id]).id
         # 現状、sessionは上書きされるからfirstで取得できる
