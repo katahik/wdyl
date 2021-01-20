@@ -15,11 +15,10 @@ class Api::ItemsController < ApplicationController
     # end
 
     def create
-
         # viewから送ってくるitem_idを頼りに@itemを探す
         @item_id = Item.find(params[:item_id]).id
-        # 現状、sessionは上書きされるからfirstで取得できる
-        @session_id = Session.first.id
+        # ブラウザ側からサーバーに渡されるsession.idを取得
+        @session_id = session.id
 
         # session_idとitem_idのカラムにそれぞれ、@item_id,@session_idの値を格納
         @chosenitem = Chosenitem.new(session_id:@session_id,item_id:@item_id)
@@ -39,6 +38,4 @@ class Api::ItemsController < ApplicationController
             .order("RANDOM()")
             .limit(2)
     end
-
-
 end

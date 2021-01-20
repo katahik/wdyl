@@ -18,20 +18,20 @@
       <%   %>
       <% @competitions.each do |competition| %>
         <tr>
-          <!--          competition_pathなどでrails routesしたときのprefixの値に_pathをつければパスになる-->
-          <!--          しかし、今回は、リンク先のidが必要なshowリクエストだから、そのidを渡す必要がある-->
-          <!--          だから、competition.idで、idを渡す-->
+          <!-- competition_pathなどでrails routesしたときのprefixの値に_pathをつければパスになる-->
+          <!-- しかし、今回は、リンク先のidが必要なshowリクエストだから、そのidを渡す必要がある-->
+          <!-- だから、competition.idで、idを渡す-->
           <td><%=link_to competition.name,competition_path(competition.id) %></td>
 
-          <% @winners.each do |winner| %>
-            <!--            competitionのidとwinnerのcompetition_idが一致していたら、画像やname,pointを表示-->
-            <% if competition.id == winner.competition_id %>
+          <% @winners_in_index.each do |winner| %>
+            <!-- competitionのidとwinnerのcompetition_idが一致していたら、画像やname,pointを表示-->
+            <% if competition.id == winner["competition_id"] %>
 
               <td>
-                <%= image_tag "/item_images/#{winner.image}", width: "100px", height: "100"%><br>
+                <%= image_tag "/item_images/#{winner["image"]}", width: "100px", height: "100"%><br>
                 <br>
-                <%= winner.name %><br>
-                <%= winner.points %>
+                <%= winner["name"] %><br>
+                <%= winner["count"] %>
               </td>
 
             <% end %>

@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2021_01_16_094235) do
 
   create_table "chosenitems", force: :cascade do |t|
-    t.integer "session_id"
+    t.string "session_id"
     t.integer "item_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -41,8 +41,7 @@ ActiveRecord::Schema.define(version: 2021_01_16_094235) do
     t.index ["competition_id"], name: "index_items_on_competition_id"
   end
 
-  create_table "sessions", force: :cascade do |t|
-    t.string "session_id", null: false
+  create_table "sessions", primary_key: "session_id", id: :string, force: :cascade do |t|
     t.text "data"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -63,5 +62,6 @@ ActiveRecord::Schema.define(version: 2021_01_16_094235) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "chosenitems", "sessions", primary_key: "session_id"
   add_foreign_key "items", "competitions"
 end

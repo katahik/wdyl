@@ -1,0 +1,15 @@
+current directory: /Users/katahira/dev/wdyl/wdyl_vue/vendor/bundler/ruby/2.7.0/gems/websocket-driver-0.7.3/ext/websocket-driver
+/Users/katahira/.rbenv/versions/2.7.0/bin/ruby -I /Users/katahira/.rbenv/versions/2.7.0/lib/ruby/2.7.0 -r ./siteconf20210120-14095-5kpmla.rb extconf.rb
+creating Makefile
+
+current directory: /Users/katahira/dev/wdyl/wdyl_vue/vendor/bundler/ruby/2.7.0/gems/websocket-driver-0.7.3/ext/websocket-driver
+make "DESTDIR=" clean
+
+current directory: /Users/katahira/dev/wdyl/wdyl_vue/vendor/bundler/ruby/2.7.0/gems/websocket-driver-0.7.3/ext/websocket-driver
+make "DESTDIR="
+compiling websocket_mask.c
+linking shared-object websocket_mask.bundle
+
+current directory: /Users/katahira/dev/wdyl/wdyl_vue/vendor/bundler/ruby/2.7.0/gems/websocket-driver-0.7.3/ext/websocket-driver
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 websocket_mask.bundle ./.gem.20210120-14095-eam60i
