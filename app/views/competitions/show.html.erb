@@ -15,11 +15,7 @@
       </thead>
       <tbody>
       <!--@itemsの配列の中身をひとつひとつitemに入れて、実行していく-->
-      <!--パラメータのページの箇所(page=1とか)を整数に変えたときに1より大きかったら-->
-      <!--1とかparams[:page]*5-4をして、そのページの一番目の値（ランキング）を取る。-->
-      <!--違ったら（1ページ目だったら）1を代入-->
-      <% page = params[:page].to_i > 1 ? params[:page].to_i * 5 - 4 : 1 %>
-      <% @rankeditems.each.with_index(page) do |item| %>
+      <% @rankeditems.each do |item| %>
         <% if @competition.id == item["competition_id"] %>
           <tr>
             <td><%= item["rank"] %></td>

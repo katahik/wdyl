@@ -47,7 +47,6 @@ class CompetitionsController < ApplicationController
     # GET /competition/:id
     def show
         @competition = Competition.find(params[:id])
-        @items = @competition.items.order(points: "DESC").paginate(page: params[:page], per_page: 5)
 
         rankeditems =
             "SELECT *
