@@ -48,6 +48,26 @@ class CompetitionsController < ApplicationController
     def show
         @competition = Competition.find(params[:id])
         @items = @competition.items.order(points: "DESC").paginate(page: params[:page], per_page: 5)
+
+        rankeditems =
+            "SELECT *
+                FROM (
+                    SELECT
+                        *,
+                        RANK() OVER (PARTITION BY competition_id ORDER BY COUNT DESC) AS rank
+                        FROM (
+                            SELECT
+                                items.competition_id,
+                                items.id,
+                                items.image,
+                                items.name,
+                                count(*) AS count
+                            FROM chosenitems INNER JOIN items ON chosenitems.item_id = items.id
+                            GROUP BY items.competition_id, items.id
+                    ) AS t
+                ) AS tt
+            ORDER BY COUNT DESC"
+        @rankeditems = ActiveRecord::Base.connection.select_all(rankeditems).to_ary
     end
 
 end
