@@ -1,5 +1,12 @@
 <h1 id="heading">Past Competitions</h1>
 
+<p>タイトルを検索</p>
+<!--DBの変更に関わらないときはform_tagを使う-->
+<%= form_tag(competitions_path,:method => 'get') do %>
+  <%= text_field_tag :search %>
+  <%= submit_tag 'Search', :name => nil %>
+<% end %>
+
 <div class="container">
   <div class="paginate">
     <!--    paginateを表示させる-->
