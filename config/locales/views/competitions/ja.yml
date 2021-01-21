@@ -1,0 +1,8 @@
+ja:
+#  views/competitions/index.html.erbのなかのtitleに入れる値を書く
+  competitions:
+    index:
+      name: '大会名'
+      period_start: '始まり'
+      period_end: '終わり'
+      search: '検索'

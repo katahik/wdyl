@@ -19,7 +19,6 @@ class Api::ItemsController < ApplicationController
         @item_id = Item.find(params[:item_id]).id
         # ブラウザ側からサーバーに渡されるsession.idを取得
         @session_id = session.id
-
         # session_idとitem_idのカラムにそれぞれ、@item_id,@session_idの値を格納
         @chosenitem = Chosenitem.new(session_id:@session_id,item_id:@item_id)
         @chosenitem.save
