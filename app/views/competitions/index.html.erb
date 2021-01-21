@@ -3,9 +3,42 @@
 <p>タイトルを検索</p>
 <!--DBの変更に関わらないときはform_tagを使う-->
 <%= form_tag(competitions_path,:method => 'get') do %>
-  <%= text_field_tag :search %>
+  <%= text_field_tag :search_title %>
   <%= submit_tag 'Search', :name => nil %>
 <% end %>
+
+<!--scope: :searchとすることでコントローラー側でparams[:search]でデータを受け取れる-->
+<!--url:とすることでボタンを押したときにどのURLにリクエストを送ればいいか定義する。今回はcompetitionsのindexアクションに送りたいから、competitions_path-->
+<!--GETメソッドを定義-->
+<!--form_withのデフォルトはremote:trueであり、これだとXMLHttpRequest(Ajax)で通信が行われる。今回は使わないのでlocal:trueに-->
+<div class="search-form">
+  <%= form_with(scope: :search, url: competitions_path, method: :get, local: true) do |f| %>
+    <div class="field">
+      <%= f.label(:name, Competition.human_attribute_name(:name)) %>
+<!--      text_field:nameとすることでコントローラー側でparams[:search][:name]でvalueを受け取れる-->
+<!--      value:@search_params[:name]とすることで検索された情報（検索パラメーター）を保持できる-->
+      <%= f.text_field :name, value: @search_params[:name] %>
+    </div>
+
+    <div class="field">
+      <%= f.label(:period_start, Competition.human_attribute_name(:period_start)) %>
+      <%= f.date_field :period_start, value: @search_params[:period_start] %>
+    </div>
+
+    <div class="field">
+      <%= f.label(:period_end, Competition.human_attribute_name(:period_end)) %>
+      <%= f.date_field :period_end, value: @search_params[:period_end] %>
+    </div>
+
+
+    <div class="actions">
+      <%= f.submit(t('helpers.submit.search')) %>
+    </div>
+  <% end %>
+</div>
+
+
+
 
 <div class="container">
   <div class="paginate">
