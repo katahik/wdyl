@@ -30,11 +30,12 @@ class Api::ItemsController < ApplicationController
     private
 
     # candidate 候補
+    # order("RAND()") でランダムに並び替えて、limitメソッドで2つのデータを取得
     def candidate_items
         Competition
             .find_by(period_start: -Float::INFINITY..Date.today, period_end: Date.today..Float::INFINITY)
             .items
-            .order("RANDOM()")
+            .order("RAND()")
             .limit(2)
     end
 end

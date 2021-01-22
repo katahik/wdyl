@@ -184,8 +184,9 @@ end
 # これでitemシーダーで作った、itemのidをchosenitemテーブルへ流し込める
 # そうすることで、competition_idが取得できる
 # session数が5つで、それぞれのsessionでitemを10個ランダムに選択する
+
 5.times do |n|
-    Item.order("RANDOM()").limit(10).each do |item|
+    Item.order("RAND()").limit(10).each do |item|
         item.chosenitems.create!(
             session_id: "#{n+1}",
             item_id: rand(item.id)
