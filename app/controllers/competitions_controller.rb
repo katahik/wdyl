@@ -22,45 +22,60 @@ class CompetitionsController < ApplicationController
 
         # chosenitemsとitemsテーブルをひっつけて、competition_idで分けてから,また、item_idで分けて、item_idをカウントした
         # item_idの個数がわかったから、それを元にランク付けを行った
-        # RANK() OVER (PARTITION BY competition_id ORDER BY COUNT DESC) AS rank
-        #  → competition_idごとに振り分けて、COUNTの数によって順位付けして、rankという列を作り、そこに表示
-        # 最後に、rank=1、competitionでくくってrankが1のものでcompetition_idでのみを抽出する
+        # RANK() OVER (PARTITION BY competition_id ORDER BY COUNT DESC) AS rnk
+        #  → competition_idごとに振り分けて、COUNTの数によって順位付けして、rnkという列を作り、そこに表示
+        # 最後に、rnk=1、competitionでくくってrnkが1のものでcompetition_idでのみを抽出する
+        # mySQLでaliasにrankを使うことはできない。キーワードで決まっているため
         winners_in_index =
             "SELECT *
-                FROM (
-                    SELECT
-                        *,
-                        RANK() OVER (PARTITION BY competition_id ORDER BY COUNT DESC) AS rank
-                        FROM (
-                            SELECT
-                                items.competition_id,
-                                items.id,
-                                items.image,
-                                items.name,
-                                count(*) AS count
-                            FROM chosenitems INNER JOIN items ON chosenitems.item_id = items.id
-                            GROUP BY items.competition_id, items.id
-                    ) AS t
-                ) AS tt
-            WHERE rank = 1
-            GROUP BY competition_id"
-
+                FROM (SELECT *,RANK() OVER (PARTITION BY competition_id ORDER BY COUNT DESC) AS rnk
+                    FROM (SELECT items.competition_id,items.id,items.image,items.name,count(*) AS count
+                        FROM chosenitems INNER JOIN items ON chosenitems.item_id = items.id
+                            GROUP BY items.competition_id,items.id) AS t) AS tt
+            WHERE rnk = 1 ORDER BY count desc;"
+#         winners_in_index =
+#             "SELECT * FROM(
+#                 SET @rank=0,@before_line_count=0;
+#                 SELECT
+#                     CASE WHEN @before_line_count=count THEN @rank
+#                     ELSE @rank:=@rank+1
+#                     END AS rank,
+#                      * ,
+#                     @before_line_count:=count AS count
+#
+#                 FROM
+# (
+#                     SELECT
+#                         items.competition_id,
+#                         items.id,
+#                         items.image,
+#                         items.name,
+#                         count(*) AS count
+#                     FROM chosenitems INNER JOIN items ON chosenitems.item_id = items.id
+#                     GROUP BY items.competition_id, items.id
+#                     ) AS t
+#
+#
+#                 ) AS tt
+#             GROUP BY competition_id
+#             "
         # select_all -> セレクト文の結果取得
         @winners_in_index= ActiveRecord::Base.connection.select_all(winners_in_index).to_ary
-    end
 
+    end
 
 
     # GET /competition/:id
     def show
         @competition = Competition.find(params[:id])
 
+        # RANK()のariasでrankはキーワード指定になっているから使えない
         rankeditems =
             "SELECT *
                 FROM (
                     SELECT
                         *,
-                        RANK() OVER (PARTITION BY competition_id ORDER BY COUNT DESC) AS rank
+                        RANK() OVER (PARTITION BY competition_id ORDER BY COUNT DESC) AS rnk
                         FROM (
                             SELECT
                                 items.competition_id,
@@ -73,6 +88,7 @@ class CompetitionsController < ApplicationController
                     ) AS t
                 ) AS tt
             ORDER BY COUNT DESC"
+
         @rankeditems = ActiveRecord::Base.connection.select_all(rankeditems).to_ary
     end
 
