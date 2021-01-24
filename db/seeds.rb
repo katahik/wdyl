@@ -100,7 +100,7 @@ end
     )
 end
 
-10.times do |n|
+9.times do |n|
     name  = "drink#{n+1}"
     image = "drink_sample.jpeg"
     points = Faker:: Number.between(from: 1, to: 100)
@@ -110,7 +110,7 @@ end
                  competition_id: 5
     )
 end
-10.times do |n|
+9.times do |n|
     name  = "sumo_wrestler#{n+1}"
     image = "sumo_wrestler_sample.jpeg"
     points = Faker:: Number.between(from: 1, to: 100)
@@ -120,7 +120,7 @@ end
                  competition_id: 6
     )
 end
-10.times do |n|
+9.times do |n|
     name  = "movie#{n+1}"
     image = "movie_sample.jpeg"
     points = Faker:: Number.between(from: 1, to: 100)
@@ -130,7 +130,7 @@ end
                  competition_id: 7
     )
 end
-10.times do |n|
+9.times do |n|
     name  = "food#{n+1}"
     image = "food_sample.jpeg"
     points = Faker:: Number.between(from: 1, to: 100)
@@ -140,7 +140,7 @@ end
                  competition_id: 8
     )
 end
-10.times do |n|
+9.times do |n|
     name  = "color#{n+1}"
     image = "color_sample.jpeg"
     points = Faker:: Number.between(from: 1, to: 100)
@@ -150,7 +150,7 @@ end
                  competition_id: 9
     )
 end
-10.times do |n|
+9.times do |n|
     name  = "book#{n+1}"
     image = "book_sample.jpeg"
     points = Faker:: Number.between(from: 1, to: 100)
@@ -160,7 +160,7 @@ end
                  competition_id: 10
     )
 end
-10.times do |n|
+9.times do |n|
     name  = "book#{n+1}"
     image = "book_sample.jpeg"
     points = Faker:: Number.between(from: 1, to: 100)
