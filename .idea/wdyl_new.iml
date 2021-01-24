@@ -24,6 +24,7 @@
       <excludeFolder url="file://$MODULE_DIR$/public/system" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/bundler" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/cache" />
     </content>
     <orderEntry type="jdk" jdkName="rbenv: 2.7.0" jdkType="RUBY_SDK" />
@@ -788,6 +789,27 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
+      <library name="mysql2 (vbundled(0.5.3)) [path][gem]" type="rubylib">
+        <properties>
+          <option name="version" value="4" />
+        </properties>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/bundler/ruby/2.7.0/gems/mysql2-0.5.3/ext" />
+          <root url="file://$MODULE_DIR$/vendor/bundler/ruby/2.7.0/gems/mysql2-0.5.3/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundler/ruby/2.7.0/gems/mysql2-0.5.3/support" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/bundler/ruby/2.7.0/gems/mysql2-0.5.3/ext" />
+          <root url="file://$MODULE_DIR$/vendor/bundler/ruby/2.7.0/gems/mysql2-0.5.3/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundler/ruby/2.7.0/gems/mysql2-0.5.3/support" />
+        </SOURCES>
+        <excluded>
+          <root url="file://$MODULE_DIR$/vendor/bundler/ruby/2.7.0/gems/mysql2-0.5.3/ext" />
+          <root url="file://$MODULE_DIR$/vendor/bundler/ruby/2.7.0/gems/mysql2-0.5.3/support" />
+        </excluded>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
       <library name="nio4r (vbundled(2.5.4)) [path][gem]" type="rubylib">
         <properties>
           <option name="version" value="4" />
@@ -1335,33 +1357,6 @@
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundler/ruby/2.7.0/gems/sprockets-rails-3.2.2/lib" />
         </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library name="sqlite3 (vbundled(1.4.2)) [path][gem]" type="rubylib">
-        <properties>
-          <option name="version" value="4" />
-        </properties>
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/vendor/bundler/ruby/2.7.0/gems/sqlite3-1.4.2/ext" />
-          <root url="file://$MODULE_DIR$/vendor/bundler/ruby/2.7.0/gems/sqlite3-1.4.2/faq" />
-          <root url="file://$MODULE_DIR$/vendor/bundler/ruby/2.7.0/gems/sqlite3-1.4.2/lib" />
-          <root url="file://$MODULE_DIR$/vendor/bundler/ruby/2.7.0/gems/sqlite3-1.4.2/test" />
-          <root url="file://$MODULE_DIR$/vendor/bundler/ruby/2.7.0/gems/sqlite3-1.4.2/rakelib" />
-        </CLASSES>
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/vendor/bundler/ruby/2.7.0/gems/sqlite3-1.4.2/ext" />
-          <root url="file://$MODULE_DIR$/vendor/bundler/ruby/2.7.0/gems/sqlite3-1.4.2/faq" />
-          <root url="file://$MODULE_DIR$/vendor/bundler/ruby/2.7.0/gems/sqlite3-1.4.2/lib" />
-          <root url="file://$MODULE_DIR$/vendor/bundler/ruby/2.7.0/gems/sqlite3-1.4.2/test" />
-          <root url="file://$MODULE_DIR$/vendor/bundler/ruby/2.7.0/gems/sqlite3-1.4.2/rakelib" />
-        </SOURCES>
-        <excluded>
-          <root url="file://$MODULE_DIR$/vendor/bundler/ruby/2.7.0/gems/sqlite3-1.4.2/ext" />
-          <root url="file://$MODULE_DIR$/vendor/bundler/ruby/2.7.0/gems/sqlite3-1.4.2/faq" />
-          <root url="file://$MODULE_DIR$/vendor/bundler/ruby/2.7.0/gems/sqlite3-1.4.2/test" />
-          <root url="file://$MODULE_DIR$/vendor/bundler/ruby/2.7.0/gems/sqlite3-1.4.2/rakelib" />
-        </excluded>
       </library>
     </orderEntry>
     <orderEntry type="module-library">

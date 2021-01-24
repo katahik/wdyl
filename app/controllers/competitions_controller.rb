@@ -19,48 +19,52 @@ class CompetitionsController < ApplicationController
                             .order(period_start: "DESC")
                             .search(@search_params)
 
-
         # chosenitemsとitemsテーブルをひっつけて、competition_idで分けてから,また、item_idで分けて、item_idをカウントした
         # item_idの個数がわかったから、それを元にランク付けを行った
-        # RANK() OVER (PARTITION BY competition_id ORDER BY COUNT DESC) AS rank
-        #  → competition_idごとに振り分けて、COUNTの数によって順位付けして、rankという列を作り、そこに表示
-        # 最後に、rank=1、competitionでくくってrankが1のものでcompetition_idでのみを抽出する
+        # RANK() OVER (PARTITION BY competition_id ORDER BY COUNT DESC) AS rnk
+        #  → competition_idごとに振り分けて、COUNTの数によって順位付けして、rnk(rankはキーワードになっているから使えない)という列を作り、そこに表示
+        # 最後に、WHEREでrnk=1のものを指定し、各competition_idでグルーピングする
+        # competition_idでくくるときは、GROUP BY句で指定したもの以外はSELECT句にはおけない
+        # しかし、集約関数は(MAXやMINなど)は書くことができる。だから、MINで一番小さいitem_idを持ってきて、他の項目もminで持ってくる(min統一しないとデータがねじれる)
         winners_in_index =
-            "SELECT *
-                FROM (
-                    SELECT
-                        *,
-                        RANK() OVER (PARTITION BY competition_id ORDER BY COUNT DESC) AS rank
-                        FROM (
-                            SELECT
-                                items.competition_id,
-                                items.id,
-                                items.image,
-                                items.name,
-                                count(*) AS count
-                            FROM chosenitems INNER JOIN items ON chosenitems.item_id = items.id
-                            GROUP BY items.competition_id, items.id
-                    ) AS t
-                ) AS tt
-            WHERE rank = 1
-            GROUP BY competition_id"
-
-        # select_all -> セレクト文の結果取得
+            "SELECT
+                competition_id,
+                MIN(id) AS id,
+                MIN(image) AS image,
+                MIN(name) AS name,
+                MIN(count) AS count,
+                MIN(rnk) AS rnk
+            FROM
+                (SELECT
+                    *,
+                    RANK() OVER (PARTITION BY competition_id ORDER BY COUNT DESC) rnk
+                FROM (SELECT
+                    items.competition_id,
+                    items.id,
+                    items.image,
+                    items.name,
+                    count(*) AS count
+                    FROM
+                        chosenitems INNER JOIN items ON chosenitems.item_id = items.id
+                        GROUP BY items.competition_id,items.id) AS t) AS tt
+            WHERE rnk = 1
+            GROUP BY competition_id;"
         @winners_in_index= ActiveRecord::Base.connection.select_all(winners_in_index).to_ary
-    end
 
+    end
 
 
     # GET /competition/:id
     def show
         @competition = Competition.find(params[:id])
 
+        # RANK()のariasでrankはキーワード指定になっているから使えない
         rankeditems =
             "SELECT *
                 FROM (
                     SELECT
                         *,
-                        RANK() OVER (PARTITION BY competition_id ORDER BY COUNT DESC) AS rank
+                        RANK() OVER (PARTITION BY competition_id ORDER BY COUNT DESC) AS rnk
                         FROM (
                             SELECT
                                 items.competition_id,
@@ -73,6 +77,7 @@ class CompetitionsController < ApplicationController
                     ) AS t
                 ) AS tt
             ORDER BY COUNT DESC"
+
         @rankeditems = ActiveRecord::Base.connection.select_all(rankeditems).to_ary
     end
 
